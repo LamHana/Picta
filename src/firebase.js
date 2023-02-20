@@ -8,6 +8,8 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from 'firebase/auth';
+import { toastSuccess, toastError } from './components/ToastNotification';
+
 import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
 const firebaseConfig = {
   apiKey: 'AIzaSyBUZv99mbA6BPfSS6mxiASb0CCxW5T6xyk',
@@ -38,15 +40,17 @@ const signInWithGoogle = async () => {
     }
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    toastError(err.message);
   }
 };
+
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    toastSuccess('Đăng nhập thành công');
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    console.error(err.message);
+    if (err.message === 'Firebase: Error (auth/wrong-password).') toastError('Sai mật khẩu,Vui lòng thử lại !!');
   }
 };
 const registerWithEmailAndPassword = async (name, email, password) => {
@@ -59,18 +63,19 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       authProvider: 'local',
       email,
     });
+    toastSuccess('Đăng ký thành công');
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    toastError(err.message);
   }
 };
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
-    alert('Password reset link sent!');
+    toastSuccess('Email gửi đi thành công');
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    toastError(err.message);
   }
 };
 const logout = () => {

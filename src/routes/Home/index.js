@@ -1,5 +1,6 @@
+import { Container } from './styled';
 function Home() {
-  return <div>Home</div>;
+  return <Container>Home</Container>;
 }
 
 export default Home;

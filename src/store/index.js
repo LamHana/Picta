@@ -2,6 +2,9 @@ import { combineReducers } from 'redux';
 
 import { configureStore } from '@reduxjs/toolkit';
 
+// Define the Reducers that will always be present in the application
+const staticReducers = {};
+
 const store = configureStore({ reducer: createReducer() });
 
 // Add a dictionary to keep track of the registered async reducers
@@ -20,6 +23,7 @@ function createReducer(asyncReducers = {}) {
     return (state) => state;
   } else {
     return combineReducers({
+      ...staticReducers,
       ...asyncReducers,
     });
   }

@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-
 import PrivateRoute from './PrivateRoute';
 import Home from './Home';
 import PublicRoute from './PublicRoute';
 import Restaurant from './Restaurant/index';
 import LayoutComponent from '../components/Layout/Layout.component';
-
+import Login from './Login';
+import SignUp from './SignUp';
+import Recover from './SignUp/PasswordRecover';
 const publicRoute = [
   {
     path: 'home',
@@ -16,6 +17,24 @@ const publicRoute = [
   {
     path: 'restaurant',
     component: <Restaurant />,
+    exact: true,
+    restrict: true,
+  },
+  {
+    path: 'login',
+    component: <Login />,
+    exact: true,
+    restrict: true,
+  },
+  {
+    path: 'signup',
+    component: <SignUp />,
+    exact: true,
+    restrict: true,
+  },
+  {
+    path: 'recover',
+    component: <Recover />,
     exact: true,
     restrict: true,
   },

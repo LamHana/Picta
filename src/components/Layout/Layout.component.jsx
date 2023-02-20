@@ -1,11 +1,14 @@
 import NavBar from '../NavBar';
 import Footer from '../Footer';
+import { Container } from './styled.js';
 const LayoutComponent = ({ children }) => {
   return (
     <>
-      <NavBar />
-      <div className="site-layout-background">{children}</div>
-      <Footer />
+      <Container>
+        <NavBar />
+        <div className="site-layout-background">{children}</div>
+        <Footer />
+      </Container>
     </>
   );
 };

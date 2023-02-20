@@ -2,14 +2,15 @@ import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
-
+import './index.css';
+import Toast from './components/ToastNotification';
 import RouterComponent from './routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <RouterComponent />
-    {/* <Toast /> */}
+    <Toast />
   </Provider>
 );
 
