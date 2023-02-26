@@ -1,41 +1,45 @@
+// import React from 'react';
+import { DownOutlined } from '@ant-design/icons';
+import { restaurants } from '../../../data';
 import { useState } from 'react';
+import { MyDropDown, MySpace, MyTypography } from './styled';
+const items = [];
+restaurants.map((restaurant, index) => {
+  console.log(index);
+  restaurant.address.map((address, key) => {
+    console.log(address);
+    return items.push({
+      key: `'${key}'`,
+      label: address,
+    });
+  });
+});
 
-import { restaurant } from '../../../data';
-import * as React from 'react';
-import { MyDropDown } from './styled';
-function AddressDropDownList() {
-  const [address, setAddress] = useState(restaurant[0].address[0]);
-  const itemRender = (li) => {
-    const itemChildren = (
-      <span
-        style={{
-          fontSize: '15px',
-          fontFamily: 'Open Sans',
-        }}
-      >
-        {li.props.children}
-      </span>
-    );
-    return React.cloneElement(li, li.props, itemChildren);
+function AddressDropDown() {
+  const [select, setSelect] = useState(items[0].label);
+  const onClick = ({ key }) => {
+    items.map((item) => {
+      if (item.key == key) setSelect(item.label);
+    });
   };
+
   return (
     <MyDropDown
-      data={restaurant[0].address}
-      itemRender={itemRender}
-      defaultItem={address}
-      onChange={(e) => {
-        return setAddress(e.target.value);
+      menu={{
+        items,
+        selectable: true,
+        defaultSelectedKeys: [select],
+        onClick,
       }}
-      style={{
-        width: '310px',
-        height: '40px',
-        fontSize: '16px',
-        fontFamily: 'Open Sans',
-        border: 'none',
-        whiteSpace: 'nowrap',
-      }}
-    />
+    >
+      <MyTypography.Link>
+        <MySpace>
+          {select}
+          <DownOutlined />
+        </MySpace>
+      </MyTypography.Link>
+    </MyDropDown>
   );
 }
 
-export default AddressDropDownList;
+export default AddressDropDown;

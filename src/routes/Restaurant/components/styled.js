@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { DropDownList } from '@progress/kendo-react-dropdowns';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import { Dropdown, Space, Typography } from 'antd';
 
 export const Avt = styled.img`
   background-color: black;
@@ -34,13 +36,17 @@ export const Branch = styled.div`
   font-weight: 600;
 `;
 
-export const MyDropDown = styled(DropDownList)`
-  .k-button-icon {
-    color: #ff6d02;
-  }
-  font-family: 'Open Sans' !important ;
+export const MyDropDown = styled(Dropdown)`
+  width: 310px;
+  height: 20px;
+  text-overflow: clip;
 `;
 
+export const MySpace = styled(Space)`
+  color: #ff6d02;
+  font-family: 'Open Sans' !important ;
+`;
+export const MyTypography = styled(Typography)``;
 export const Button = styled.button`
   width: 180px;
   height: 45px;
@@ -171,5 +177,92 @@ export const Description = styled.div`
     font-size: 16px;
     font-family: 'Open Sans';
     color: #121522;
+  }
+  margin-bottom: 80px;
+`;
+
+export const SpaceRestaurant = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 54px 37px;
+  grid-template-areas:
+    'h1 h3 h3'
+    'h2 h3 h3';
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  img:nth-child(1) {
+    grid-area: h1;
+  }
+
+  img:nth-child(2) {
+    grid-area: h2;
+  }
+
+  img:nth-child(3) {
+    grid-area: h3;
+  }
+`;
+
+export const TabMenu = styled(Tab)`
+  width: 400px;
+`;
+
+export const BoxMenu = styled(Box)`
+  button {
+    color: #121522;
+    font-size: 18px;
+  }
+  .css-1aquho2-MuiTabs-indicator {
+    background-color: #ff6d02;
+  }
+
+  .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: #ff6d02;
+  }
+`;
+export const Menu = styled.div``;
+
+export const FoodWrapper = styled.div``;
+
+export const FoodContainer = styled.div`
+  width: 100%;
+  height: 250px;
+  background-color: #ececed;
+  border-radius: 55px;
+  display: flex;
+  margin-bottom: 50px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    box-shadow: 0 4px 15px 0 gray;
+  }
+`;
+
+export const LeftContainer = styled.div`
+  img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 55px;
+  }
+  margin-right: 20px;
+`;
+
+export const RightContainer = styled.div`
+  font-weight: 800;
+  font-family: 'Open Sans';
+  font-size: 18px;
+  margin-top: 20px;
+  div {
+    font-size: 25px;
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
   }
 `;

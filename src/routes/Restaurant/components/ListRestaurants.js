@@ -1,15 +1,16 @@
-import { restaurant } from '../../../data';
+import { restaurants } from '../../../data';
 import AddressDropDownList from './AddressDropDown';
 import { Avt, Content, Button, Branch, FlexRow, Container, Description } from './styled';
 import { BodyPage } from '../styled';
 import '@progress/kendo-theme-default/dist/all.css';
 import RatingRestaurant from './Rating';
 import Point from './Point';
+import BasicTabs from './Menu';
 
 function ListRestaurant() {
   return (
     <BodyPage>
-      {restaurant.map((restaurant, index) => {
+      {restaurants.map((restaurant, index) => {
         return (
           <div key={index}>
             <Avt src={restaurant.logo}></Avt>
@@ -32,6 +33,7 @@ function ListRestaurant() {
                 <h2>Giới thiệu</h2>
                 <div>{restaurant.description}</div>
               </Description>
+              <BasicTabs restaurant={restaurant}></BasicTabs>
             </Container>
           </div>
         );

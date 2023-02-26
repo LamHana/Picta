@@ -1,11 +1,11 @@
 import { Container, HeadPage, BodyPage } from './styled';
-import { restaurant } from '../../data/index';
+import { restaurants } from '../../data/index';
 import ListRestaurant from './components/ListRestaurants';
 function Restaurant() {
   return (
     <Container>
       <HeadPage>
-        <img alt="hana" src={`${restaurant[0].pic}`}></img>
+        <img alt="hana" src={`${restaurants[0].pic}`}></img>
       </HeadPage>
       <BodyPage>
         <ListRestaurant></ListRestaurant>
